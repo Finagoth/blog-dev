@@ -1,33 +1,4 @@
-<<<<<<< HEAD
 @import "tailwindcss";
-@source "../src";
-=======
-@import "tailwindcss" source(none);
-@source "../src";
-@import "tw-animate-css";
->>>>>>> 5b07902dc82241c81ff9438e398df6651d4064ef
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-border: var(--border);
-  --color-nebula: var(--nebula);
-  --color-cosmic: var(--cosmic);
-  --color-star: var(--star);
-  --font-display: "Space Grotesk", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-}
 
 :root {
   --background: oklch(0.12 0.04 280);
@@ -43,78 +14,21 @@
   --accent: oklch(0.7 0.2 200);
   --accent-foreground: oklch(0.12 0.04 280);
   --border: oklch(0.96 0.01 280 / 0.12);
-  --nebula: oklch(0.6 0.25 320);
-  --cosmic: oklch(0.55 0.22 250);
-  --star: oklch(0.96 0.05 280);
   --radius: 1rem;
 }
 
-@layer base {
-<<<<<<< HEAD
-  * {
-    border-color: var(--color-border);
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-=======
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
->>>>>>> 5b07902dc82241c81ff9438e398df6651d4064ef
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-body);
-    overflow-x: hidden;
-  }
-<<<<<<< HEAD
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: var(--font-display);
-    letter-spacing: -0.02em;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
-@utility text-glow {
-  text-shadow:
-    0 0 30px color-mix(in oklab, var(--primary) 60%, transparent),
-    0 0 60px color-mix(in oklab, var(--accent) 30%, transparent);
-}
-
-@utility glass-card {
-  background: linear-gradient(
-    135deg,
-    color-mix(in oklab, var(--primary) 8%, transparent),
-    color-mix(in oklab, var(--accent) 4%, transparent)
-  );
-=======
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
-}
-
-@utility text-glow {
-  text-shadow: 0 0 30px color-mix(in oklab, var(--primary) 60%, transparent),
-               0 0 60px color-mix(in oklab, var(--accent) 30%, transparent);
-}
-
-@utility glass-card {
-  background: linear-gradient(135deg,
-    color-mix(in oklab, var(--primary) 8%, transparent),
-    color-mix(in oklab, var(--accent) 4%, transparent));
->>>>>>> 5b07902dc82241c81ff9438e398df6651d4064ef
-  backdrop-filter: blur(20px);
-  border: 1px solid color-mix(in oklab, var(--star) 15%, transparent);
-}
-
-@utility nebula-glow {
-  box-shadow:
-    0 0 80px -20px color-mix(in oklab, var(--nebula) 50%, transparent),
-    0 0 40px -10px color-mix(in oklab, var(--cosmic) 30%, transparent);
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  font-family: Inter, sans-serif;
 }
 
 @keyframes marquee {
-<<<<<<< HEAD
   from {
     transform: translateX(0);
   }
@@ -128,6 +42,7 @@
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-12px);
   }
@@ -138,6 +53,7 @@
   100% {
     opacity: 0.3;
   }
+
   50% {
     opacity: 1;
   }
@@ -146,28 +62,11 @@
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
+
 .animate-float-slow {
   animation: float-slow 6s ease-in-out infinite;
 }
+
 .animate-twinkle {
   animation: twinkle 3s ease-in-out infinite;
 }
-=======
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-.animate-marquee { animation: marquee 30s linear infinite; }
-.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-.animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
->>>>>>> 5b07902dc82241c81ff9438e398df6651d4064ef
