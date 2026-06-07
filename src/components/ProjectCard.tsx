@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 export type Project = {
   title: string;
@@ -31,17 +31,11 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
             {project.category}
           </span>
-          <span className="font-mono text-xs text-muted-foreground/60">
-            0{index + 1}
-          </span>
+          <span className="font-mono text-xs text-muted-foreground/60">0{index + 1}</span>
         </div>
 
-        <h3 className="font-display text-2xl font-semibold leading-tight">
-          {project.title}
-        </h3>
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          {project.description}
-        </p>
+        <h3 className="font-display text-2xl font-semibold leading-tight">{project.title}</h3>
+        <p className="text-sm leading-relaxed text-muted-foreground">{project.description}</p>
 
         <div className="flex flex-wrap gap-2">
           {project.tags.map((t) => (
@@ -61,7 +55,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium transition hover:bg-white/10"
           >
-            <span>Git</span>
+            <Github className="size-3.5" /> Código
           </a>
           {project.live && (
             <a
