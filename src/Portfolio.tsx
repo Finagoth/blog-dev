@@ -7,6 +7,8 @@ import {
   ExternalLink as GitHub,
 } from "lucide-react";
 
+import { useEffect, useState } from "react";
+
 import { UniverseBackground } from "./components/UniverseBackground";
 import { TechMarquee } from "./components/TechMarquee";
 import { ProjectCard, type Project } from "./components/ProjectCard";
@@ -21,8 +23,7 @@ const STACK = [
 const PROJECTS: Project[] = [
   {
     title: "Filmes App",
-    description:
-      "Catálogo de filmes consumindo a API do TMDB com busca, detalhes e UI responsiva.",
+    description: "Catálogo de filmes consumindo a API do TMDB com busca, detalhes e UI responsiva.",
     tags: ["Next.js", "TypeScript", "TMDB API"],
     repo: "https://github.com/Finagoth/filmes-app",
     live: "https://filmes-app-six.vercel.app",
@@ -31,8 +32,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Finanças App",
-    description:
-      "App mobile de finanças pessoais para controle de receitas, despesas e metas.",
+    description: "App mobile de finanças pessoais para controle de receitas, despesas e metas.",
     tags: ["React Native", "Expo", "TypeScript"],
     repo: "https://github.com/Finagoth/financas-app",
     accent: "oklch(0.7 0.2 200)",
@@ -40,8 +40,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Lista de Compras",
-    description:
-      "Aplicação web para criar e organizar listas de compras com persistência local.",
+    description: "Aplicação web para criar e organizar listas de compras com persistência local.",
     tags: ["React", "TypeScript", "Vite"],
     repo: "https://github.com/Finagoth/lista-mercado",
     live: "https://lista-mercado-rho.vercel.app",
@@ -50,8 +49,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "TodoList",
-    description:
-      "Gerenciador de tarefas com filtros, prioridades e integração com Redux Toolkit.",
+    description: "Gerenciador de tarefas com filtros, prioridades e integração com Redux Toolkit.",
     tags: ["React", "Redux", "TypeScript"],
     repo: "https://github.com/Finagoth/minhas-tarefas",
     accent: "oklch(0.7 0.2 60)",
@@ -59,8 +57,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "E-Food",
-    description:
-      "E-commerce de delivery com carrinho, checkout em etapas e integração com API.",
+    description: "E-commerce de delivery com carrinho, checkout em etapas e integração com API.",
     tags: ["React", "Styled Components", "Redux"],
     repo: "https://github.com/Finagoth/EFOOD_Projeto6",
     live: "https://efood-projeto6-rho.vercel.app",
@@ -69,8 +66,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Calculadora IMC",
-    description:
-      "Cálculo de índice de massa corporal com feedback visual e validações.",
+    description: "Cálculo de índice de massa corporal com feedback visual e validações.",
     tags: ["React", "TypeScript", "CSS3"],
     repo: "https://github.com/Finagoth/calculadora-imc",
     live: "https://calculadora-imc-red-nu.vercel.app",
@@ -80,13 +76,37 @@ const PROJECTS: Project[] = [
 ];
 
 function Portfolio() {
+  const [active, setActive] = useState("#sobre");
+  useEffect(() => {
+    const sections = ["sobre", "stack", "projetos", "contato"];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(`#${entry.target.id}`);
+          }
+        });
+      },
+      {
+        threshold: 0.4,
+      },
+    );
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <>
       <UniverseBackground />
 
       {/* NAV */}
       <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-5">
-        <nav className="glass-card flex items-center gap-1 rounded-full px-2 py-2 text-xs font-medium">
+        <nav className="glass-card flex items-center gap-1 rounded-full border border-cyan-500/20 bg-slate-950/60 px-2 py-2 text-xs font-medium backdrop-blur-xl shadow-[0_0_20px_rgba(0,200,255,0.15)]">
           {[
             ["Sobre", "#sobre"],
             ["Stack", "#stack"],
@@ -96,7 +116,11 @@ function Portfolio() {
             <a
               key={href}
               href={href}
-              className="rounded-full px-4 py-1.5 text-foreground/80 transition hover:bg-white/10 hover:text-foreground"
+              className={`rounded-full px-4 py-1.5 transition-all duration-300 ${
+                active === href
+                  ? "bg-cyan-500/15 text-cyan-300 border border-cyan-400/30 shadow-[0_0_20px_rgba(34,211,238,0.25)] scale-105"
+                  : "text-foreground/80 hover:bg-white/10 hover:text-foreground"
+              }`}
             >
               {label}
             </a>
@@ -106,10 +130,7 @@ function Portfolio() {
 
       <main className="relative mx-auto max-w-6xl px-6 pt-32 pb-24">
         {/* SOBRE / HERO */}
-        <section
-          id="sobre"
-          className="flex min-h-[80vh] flex-col justify-center"
-        >
+        <section id="sobre" className="flex min-h-[80vh] flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,10 +161,9 @@ function Portfolio() {
             transition={{ duration: 0.9, delay: 0.25 }}
             className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground"
           >
-            Desenvolvedor front-end em transição de carreira. Foco em React e
-            TypeScript, estudando todos os dias para transformar ideias em
-            produtos com bom design e código limpo. Cada projeto aqui é uma
-            órbita do meu aprendizado.
+            Desenvolvedor front-end em transição de carreira. Foco em React e TypeScript, estudando
+            todos os dias para transformar ideias em produtos com bom design e código limpo. Cada
+            projeto aqui é uma órbita do meu aprendizado.
           </motion.p>
 
           <motion.div
@@ -169,10 +189,7 @@ function Portfolio() {
 
         {/* STACK */}
         <section id="stack" className="mt-32 scroll-mt-24">
-          <SectionHeader
-            eyebrow="02 — Ferramentas"
-            title="Stack que orbita meu dia a dia"
-          />
+          <SectionHeader eyebrow="02 — Ferramentas" title="Stack que orbita meu dia a dia" />
 
           <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {STACK.map((group, i) => (
@@ -205,10 +222,7 @@ function Portfolio() {
 
         {/* PROJETOS */}
         <section id="projetos" className="mt-32 scroll-mt-24">
-          <SectionHeader
-            eyebrow="03 — Trabalhos"
-            title="Projetos lançados em órbita"
-          />
+          <SectionHeader eyebrow="03 — Trabalhos" title="Projetos lançados em órbita" />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {PROJECTS.map((p, i) => (
@@ -219,10 +233,7 @@ function Portfolio() {
 
         {/* CONTATO */}
         <section id="contato" className="mt-32 scroll-mt-24">
-          <SectionHeader
-            eyebrow="04 — Contato"
-            title="Vamos construir algo juntos?"
-          />
+          <SectionHeader eyebrow="04 — Contato" title="Vamos construir algo juntos?" />
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -232,9 +243,8 @@ function Portfolio() {
             className="glass-card mt-12 rounded-3xl p-8 sm:p-12"
           >
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Estou aberto para vagas júnior, freelas e trocas sobre
-              desenvolvimento. Me chama em qualquer canal abaixo — respondo
-              rápido.
+              Estou aberto para vagas júnior, freelas e trocas sobre desenvolvimento. Me chama em
+              qualquer canal abaixo — respondo rápido.
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -261,10 +271,7 @@ function Portfolio() {
         </section>
 
         <footer className="mt-24 flex flex-col items-center gap-2 border-t border-white/10 pt-8 text-xs text-muted-foreground">
-          <p>
-            © {new Date().getFullYear()} Lucas Caliope · Feito com React +
-            universo aleatório.
-          </p>
+          <p>© {new Date().getFullYear()} Lucas Caliope · Feito com React + universo aleatório.</p>
         </footer>
       </main>
     </>
@@ -279,9 +286,7 @@ function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
-        {eyebrow}
-      </p>
+      <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">{eyebrow}</p>
       <h2 className="mt-3 max-w-2xl font-display text-4xl font-bold leading-tight sm:text-5xl">
         {title}
       </h2>
