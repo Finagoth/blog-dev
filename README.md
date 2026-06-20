@@ -13,7 +13,8 @@ Projeto de blog desenvolvido para compartilhar conteúdos sobre desenvolvimento 
 
 ## 📸 Preview
 
-Adicione aqui uma captura de tela do projeto.
+<img width="1905" height="689" alt="image" src="https://github.com/user-attachments/assets/c54217da-7f43-4e1f-a275-029cb513c08c" />
+
 
 ## ✨ Funcionalidades
 
