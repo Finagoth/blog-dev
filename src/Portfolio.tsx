@@ -24,7 +24,7 @@ const STACK = [
   { label: "Build & Infra", items: ["Vite", "Next.js", "Vercel", "Git / GitHub"], learning: false },
   {
     label: "Estado & Roteamento",
-    items: ["Redux Toolkit", "Context API", "Zustand", "React Router", "React Hook Form", "Zod"], learning: false },
+    items: ["Redux Toolkit", "Context API", "Zustand", "React Router", "React Hook Form", "Zod"],
     learning: false,
   },
   { label: "Ferramentas", items: ["Figma", "VS Code", "NPM", "GitHub Actions"], learning: false },
