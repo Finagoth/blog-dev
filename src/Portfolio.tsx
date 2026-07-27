@@ -24,7 +24,7 @@ const STACK = [
   { label: "Build & Infra", items: ["Vite", "Next.js", "Vercel", "Git / GitHub"], learning: false },
   {
     label: "Estado & Roteamento",
-    items: ["Redux Toolkit", "Context API", "React Router"],
+    items: ["Redux Toolkit", "Context API", "Zustand", "React Router", "React Hook Form", "Zod"], learning: false },
     learning: false,
   },
   { label: "Ferramentas", items: ["Figma", "VS Code", "NPM", "GitHub Actions"], learning: false },
@@ -46,6 +46,16 @@ const PROJECTS: Project[] = [
     accent: "oklch(0.75 0.18 295)",
     category: "Autoral",
   },
+  {
+  title: "Job Tracker",
+  description:
+    "Gestor de candidaturas com autenticação, CRUD completo, dashboard de métricas, filtros combinados e dark mode persistente.",
+  tags: ["React", "TypeScript", "Zustand", "React Hook Form", "Zod", "Tailwind CSS"],
+  repo: "https://github.com/Finagoth/job-tracker",
+  live: "https://job-tracker-rho-roan.vercel.app",
+  accent: "oklch(0.65 0.22 250)",
+  category: "Autoral",
+},
   {
     title: "Filmes App",
     description:
